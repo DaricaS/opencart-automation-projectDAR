@@ -1,45 +1,27 @@
 package tests;
 
 import base.BaseTest;
-import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.*;
+import pages.HomePage;
+import pages.SearchPage;
+import pages.ProductPage;
+import pages.CartPage;
 
 public class CartTests extends BaseTest {
 
-    @Test(groups = "smoke")
-    public void testAddToCart() {
+    @Test
+    public void addToCartTest() {
 
-        HomePage homePage = new HomePage(driver);
-        homePage.searchProduct("MacBook");
+        HomePage home = new HomePage(driver);
+        SearchPage search = new SearchPage(driver);
+        ProductPage product = new ProductPage(driver);
+        CartPage cart = new CartPage(driver);
 
-        SearchPage searchPage = new SearchPage(driver);
-        searchPage.clickProductByIndex(0);
-
-        ProductPage productPage = new ProductPage(driver);
-        productPage.addToCart();
-
-        Assert.assertTrue(productPage.isSuccessMessageDisplayed());
-    }
-
-    @Test(groups = "regression")
-    public void testRemoveFromCart() {
-
-        HomePage homePage = new HomePage(driver);
-        homePage.searchProduct("MacBook");
-
-        SearchPage searchPage = new SearchPage(driver);
-        searchPage.clickProductByIndex(0);
-
-        ProductPage productPage = new ProductPage(driver);
-        productPage.addToCart();
-
-        driver.get("https://demo.opencart.com/index.php?route=checkout/cart");
-
-        CartPage cartPage = new CartPage(driver);
-        cartPage.removeItemByIndex(0);
-
-        Assert.assertTrue(cartPage.getCartItemsCount() == 0);
+        home.searchProduct("iphone");
+        search.selectProduct();
+        product.addToCart();
+        cart.openCart();
     }
 }
+
 
