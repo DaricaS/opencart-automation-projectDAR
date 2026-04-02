@@ -1,0 +1,30 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="OpenCart E2E Suite" parallel="false">
+
+
+
+    <test name="Registration Tests">
+        <classes>
+            <class name="tests.RegistrationTests"/>
+        </classes>
+    </test>
+
+    <test name="Login Tests">
+        <classes>
+            <class name="tests.LoginTests"/>
+        </classes>
+    </test>
+
+    <test name="Search Tests">
+        <classes>
+            <class name="tests.SearchTests"/>
+        </classes>
+    </test>
+
+    <test name="Cart Tests">
+        <classes>
+            <class name="tests.CartTests"/>
+        </classes>
+    </test>
+
+</suite>
