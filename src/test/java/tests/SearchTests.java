@@ -1,22 +1,29 @@
 package tests;
+
 import base.BaseTest;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.Test;
+
+import java.time.Duration;
 
 public class SearchTests extends BaseTest {
 
     @Test
-    public void searchTest() throws InterruptedException {
+    public void searchTest() {
 
-        WebElement search = driver.findElement(By.xpath("//input[@name='search']"));
-        search.click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        WebElement search = wait.until(
+                ExpectedConditions.visibilityOfElementLocated(By.name("search"))
+        );
+
         search.sendKeys("iphone");
 
-        Thread.sleep(2000);
-
-        driver.findElement(By.xpath("//button[contains(@class,'btn-default')]")).click();
-
-        Thread.sleep(4000);
+        driver.findElement(By.cssSelector("button.btn.btn-default.btn-lg")).click();
     }
 }
+
