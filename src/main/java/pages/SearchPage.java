@@ -2,9 +2,6 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
-import java.util.List;
 
 public class SearchPage {
 
@@ -14,23 +11,14 @@ public class SearchPage {
         this.driver = driver;
     }
 
-    // Locators
-    By searchResults = By.cssSelector(".product-thumb");
-    By noResultsMessage = By.xpath("//p[contains(text(),'no product')]");
+    By firstProduct = By.xpath("(//div[@class='product-thumb'])[1]");
+    By addToCart = By.xpath("//button[@onclick[contains(.,'cart')]]");
 
-    // Methods
-    public int getSearchResultsCount() {
-        List<WebElement> results = driver.findElements(searchResults);
-        return results.size();
+    public void selectProduct() {
+        driver.findElement(firstProduct).click();
     }
 
-    public boolean isNoResultsMessageDisplayed() {
-        return driver.findElement(noResultsMessage).isDisplayed();
-    }
-
-    public void clickProductByIndex(int index) {
-        List<WebElement> results = driver.findElements(searchResults);
-        results.get(index).click();
+    public void addToCart() {
+        driver.findElement(addToCart).click();
     }
 }
-

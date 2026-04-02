@@ -11,16 +11,15 @@ public class LoginPage {
         this.driver = driver;
     }
 
-    // Locators
-    By emailField = By.id("input-email");
-    By passwordField = By.id("input-password");
-    By loginButton = By.cssSelector("input.btn-primary");
+    By email = By.id("input-email");
+    By password = By.id("input-password");
+    By loginBtn = By.xpath("//input[@value='Login']");
 
-    // Methods
-    public void login(String email, String password) {
-        driver.findElement(emailField).sendKeys(email);
-        driver.findElement(passwordField).sendKeys(password);
-        driver.findElement(loginButton).click();
+    public void login(String user, String pass) {
+        driver.findElement(email).sendKeys(user);
+        driver.findElement(password).sendKeys(pass);
+        driver.findElement(loginBtn).click();
     }
 }
+
 

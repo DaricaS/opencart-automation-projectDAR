@@ -11,17 +11,9 @@ public class ProductPage {
         this.driver = driver;
     }
 
-    // Locators
-    By addToCartButton = By.id("button-cart");
-    By successMessage = By.cssSelector(".alert-success");
+    By addToCart = By.id("button-cart");
 
-    // Methods
     public void addToCart() {
-        driver.findElement(addToCartButton).click();
-    }
-
-    public boolean isSuccessMessageDisplayed() {
-        return driver.findElement(successMessage).isDisplayed();
+        driver.findElement(addToCart).click();
     }
 }
-

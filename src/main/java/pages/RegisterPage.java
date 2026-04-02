@@ -11,27 +11,24 @@ public class RegisterPage {
         this.driver = driver;
     }
 
-    // Locators
-    By firstNameField = By.id("input-firstname");
-    By lastNameField = By.id("input-lastname");
-    By emailField = By.id("input-email");
-    By telephoneField = By.id("input-telephone");
-    By passwordField = By.id("input-password");
-    By confirmPasswordField = By.id("input-confirm");
-    By privacyPolicyCheckbox = By.name("agree");
-    By continueButton = By.cssSelector("input.btn-primary");
+    By firstName = By.id("input-firstname");
+    By lastName = By.id("input-lastname");
+    By email = By.id("input-email");
+    By telephone = By.id("input-telephone");
+    By password = By.id("input-password");
+    By confirmPassword = By.id("input-confirm");
+    By agree = By.name("agree");
+    By continueBtn = By.xpath("//input[@value='Continue']");
 
-    // Method
-    public void registerUser(String firstName, String lastName, String email, String phone, String password) {
+    public void register(String fn, String ln, String mail, String tel, String pass) {
 
-        driver.findElement(firstNameField).sendKeys(firstName);
-        driver.findElement(lastNameField).sendKeys(lastName);
-        driver.findElement(emailField).sendKeys(email);
-        driver.findElement(telephoneField).sendKeys(phone);
-        driver.findElement(passwordField).sendKeys(password);
-        driver.findElement(confirmPasswordField).sendKeys(password);
-        driver.findElement(privacyPolicyCheckbox).click();
-        driver.findElement(continueButton).click();
+        driver.findElement(firstName).sendKeys(fn);
+        driver.findElement(lastName).sendKeys(ln);
+        driver.findElement(email).sendKeys(mail);
+        driver.findElement(telephone).sendKeys(tel);
+        driver.findElement(password).sendKeys(pass);
+        driver.findElement(confirmPassword).sendKeys(pass);
+        driver.findElement(agree).click();
+        driver.findElement(continueBtn).click();
     }
 }
-

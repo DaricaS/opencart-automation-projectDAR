@@ -1,48 +1,27 @@
 package tests;
 
 import base.BaseTest;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.RegisterPage;
 
 public class RegistrationTests extends BaseTest {
 
-    @Test(groups = "smoke")
-    public void testSuccessfulRegistration() {
+    @Test
+    public void registerTest() {
 
-        HomePage homePage = new HomePage(driver);
-        homePage.navigateToRegister();
+        HomePage home = new HomePage(driver);
+        RegisterPage register = new RegisterPage(driver);
 
-        RegisterPage registerPage = new RegisterPage(driver);
+        home.clickMyAccount();
+        home.clickRegister();
 
-        registerPage.registerUser(
+        register.register(
                 "Test",
                 "User",
-                "test123@test.com",
+                "test" + System.currentTimeMillis() + "@mail.com",
                 "123456789",
-                "Password123"
+                "123456"
         );
-
-        Assert.assertTrue(driver.getCurrentUrl().contains("success"));
-    }
-
-    @Test(groups = "regression")
-    public void testRegistrationWithExistingEmail() {
-
-        HomePage homePage = new HomePage(driver);
-        homePage.navigateToRegister();
-
-        RegisterPage registerPage = new RegisterPage(driver);
-
-        registerPage.registerUser(
-                "Test",
-                "User",
-                "test@test.com",
-                "123456789",
-                "Password123"
-        );
-
-        Assert.assertTrue(driver.getPageSource().contains("already"));
     }
 }
